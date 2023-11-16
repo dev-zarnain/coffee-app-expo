@@ -66,9 +66,9 @@ const Home = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1 }}>
       <View
         style={{
-          height: "40%",
+          height: "34%",
           backgroundColor: "#131313",
-          padding: 26,
+          padding: 30,
         }}
       >
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
@@ -94,12 +94,12 @@ const Home = ({ navigation }) => {
               </TouchableOpacity>
             </View>
           </View>
-          <View>
+          <TouchableOpacity>
             <Image
               style={{ width: 50, height: 50 }}
               source={require("../assets/User.png")}
             />
-          </View>
+          </TouchableOpacity>
         </View>
         <View
           style={{
@@ -113,12 +113,14 @@ const Home = ({ navigation }) => {
             flexDirection: "row",
           }}
         >
-          <AntDesign
-            style={{ marginLeft: 14 }}
-            name="search1"
-            size={24}
-            color="white"
-          />
+          <TouchableOpacity>
+            <AntDesign
+              style={{ marginLeft: 14 }}
+              name="search1"
+              size={24}
+              color="white"
+            />
+          </TouchableOpacity>
           <TextInput
             style={{
               paddingHorizontal: 8,
@@ -139,23 +141,33 @@ const Home = ({ navigation }) => {
             <Ionicons name="list-outline" size={26} color="white" />
           </TouchableOpacity>
         </View>
+        <Image
+          style={{ alignSelf: "center", width: 315, height: 140 }}
+          source={require("../assets/Frame.png")}
+        />
       </View>
       <View
         style={{
-          height: "60%",
+          marginTop: 60,
+          height: "40",
+          paddingBottom: 220,
         }}
       >
         <FlatList
           style={{ paddingVertical: 12 }}
+          contentContainerStyle={{ paddingRight: 32 }}
           showsHorizontalScrollIndicator={false}
           horizontal
           data={suggestList}
           renderItem={({ item }) => (
-            <View>
+            <View style={{ left: 18 }}>
               <TouchableOpacity
                 style={{
                   backgroundColor: "#fff",
-                  margin: 12,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginVertical: 12,
+                  marginHorizontal: 12,
                   borderRadius: 12,
                   height: 40,
                   padding: 12,
@@ -167,6 +179,7 @@ const Home = ({ navigation }) => {
           )}
         />
         <FlatList
+          contentContainerStyle={{ paddingBottom: 100 }}
           numColumns={2}
           showsVerticalScrollIndicator={false}
           data={categories}
@@ -174,20 +187,21 @@ const Home = ({ navigation }) => {
             <TouchableOpacity
               onPress={() => navigation.navigate("Detail")}
               style={{
+                marginVertical: 6,
+                marginLeft: 26,
                 backgroundColor: "white",
-                margin: 12,
-                paddingHorizontal: 6,
-                paddingVertical: 6,
-                borderRadius: 16,
+                padding: 4,
+                borderRadius: 18,
               }}
             >
-              <Image style={{ width: 150, height: 140 }} source={item.img} />
-
-              <View style={{ padding: 6 }}>
-                <Text style={{ fontWeight: 600, fontSize: 22 }}>
+              <Image style={{ width: 141, height: 132 }} source={item.img} />
+              <View style={{ marginTop: 4, padding: 4 }}>
+                <Text style={{ fontWeight: 700, fontSize: 20 }}>
                   {item.title}
                 </Text>
-                <Text style={{ color: "grey", marginVertical: 4 }}>
+                <Text
+                  style={{ fontSize: 14, color: "grey", marginVertical: 4 }}
+                >
                   {item.desc}
                 </Text>
                 <View
@@ -197,7 +211,9 @@ const Home = ({ navigation }) => {
                     alignItems: "center",
                   }}
                 >
-                  <Text style={{ fontWeight: 600, fontSize: 22 }}>
+                  <Text
+                    style={{ color: "#2F4B4E", fontWeight: 700, fontSize: 22 }}
+                  >
                     $ {item.price}
                   </Text>
                   <TouchableOpacity
@@ -211,7 +227,11 @@ const Home = ({ navigation }) => {
                     }}
                   >
                     <Text
-                      style={{ color: "white", fontSize: 18, fontWeight: 600 }}
+                      style={{
+                        color: "white",
+                        fontSize: 18,
+                        fontWeight: 600,
+                      }}
                     >
                       +
                     </Text>
